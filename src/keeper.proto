@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package keeper;
+
+service FileService {
+  rpc download (DownloadRequest) returns (stream DownloadResponse);
+  rpc save (stream SaveRequest) returns (SaveResponse);
+}
+
+message DownloadRequest {
+  string location = 1;
+  string file_name = 2;
+}
+
+message DownloadResponse {
+  bytes bytes = 1;
+  string message = 2;
+}
+
+message SaveRequest {
+  bytes bytes = 1;
+}
+
+message SaveResponse {
+  uint32 status = 1;
+  string message = 2;
+}
