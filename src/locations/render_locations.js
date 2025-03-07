@@ -7,7 +7,7 @@ const tabGroup = document.querySelector("tab-group");
 tabGroup.setDefaultTab({
     title: "New Page",
     src: "./locations/new_location/new_location.html",
-    active: true
+    active: true,
 });
 
 const TabsOptions = {

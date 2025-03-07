@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electron Tabs Example</title>
-    <link rel="stylesheet" href="https://unpkg.com/electron-tabs@0.9.5/electron-tabs.css">
-</head>
-<body>
-<tab-group new-tab-button="true"></tab-group>
-<script src="locations/render_locations.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Data Cloud</title>
+<!--        <link rel="stylesheet" href="https://unpkg.com/electron-tabs@0.9.5/electron-tabs.css">-->
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="name">
+                <img class="name-img-cloud" src="./static/cloud.svg">
+                <span class="name-text" >DataCloud</span>
+            </div>
+            <img class="header-img-account" src="./static/account.svg">
+        </header>
+        <tab-group new-tab-button="true"></tab-group>
+        <script src="locations/render_locations.js"></script>
+    </body>
 </html>
