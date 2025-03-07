@@ -1,5 +1,4 @@
 :host{
-    /*overflow-y: auto;*/
     height: 300px;
 }
 
@@ -14,7 +13,7 @@ body {
     height: 50px;
     display: flex;
 }
-.header-img-account {
+.header__img-account {
     width: 45px;
     height: 45px;
     cursor: pointer;
@@ -26,15 +25,15 @@ body {
     align-items: center;
 }
 
-.name-text {
+.name__text {
     font-size: 2rem;
 }
 
-.name-img-cloud {
+.name__img-cloud {
     width: 100px;
     height: 100px;
 }
 
-.name-img-cloud:hover {
+.name__img-cloud:hover {
     filter: invert(13%) sepia(95%) saturate(4957%) hue-rotate(357deg) brightness(105%) contrast(116%);;
 }

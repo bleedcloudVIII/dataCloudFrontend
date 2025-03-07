@@ -1,0 +1,33 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container__text {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form__input {
+    width: 300px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+
+}
+.form__btn {
+    font-size: 1.5rem;
+
+}
