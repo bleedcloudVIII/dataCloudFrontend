@@ -35,5 +35,6 @@ tabGroup.addTab({
 tabGroup.addTab({
     ...TabsOptions,
     title: "thrtgefe",
-    src: "./locations/location.html"
+    src: "./locations/location.html",
+
 });

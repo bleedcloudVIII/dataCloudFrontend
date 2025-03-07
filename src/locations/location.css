@@ -1,0 +1,25 @@
+#files_block {
+    padding-left: 15px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#files_block div {
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+#files_block img {
+    width: 100px;
+    height: 100px;
+}
+
+#files_block span {
+
+}
