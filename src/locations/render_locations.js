@@ -12,6 +12,9 @@ tabGroup.setDefaultTab({
 
 const TabsOptions = {
     closable: false,
+    webviewAttributes: {
+        "height": "30px",
+    }
 }
 
 tabGroup.addTab({

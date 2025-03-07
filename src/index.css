@@ -1,8 +1,11 @@
 :host{
-    overflow-y: auto;
+    /*overflow-y: auto;*/
+    height: 300px;
 }
 
 body {
+    height: 200px;
+    overflow-y: hidden;
     font-family: "Lato", sans-serif;
 }
 
