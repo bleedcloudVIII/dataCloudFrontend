@@ -10,15 +10,19 @@ tabGroup.setDefaultTab({
 
 const TabsOptions = {
     closable: false,
-    // webviewAttributes: {
-    //     "height": "30px",
-    // },
     src: "./locations/location.html",
 }
 
 const tabs = ["Общее пространство", "Пространство1", "Моё", "Лето2020", "Анапа"];
 
-tabs.forEach(tab => {
+tabs.forEach((tab, index) => {
+    if (index === 0) {
+        tabGroup.addTab({
+            ...TabsOptions,
+            title: tab,
+            active: true,
+        });
+    }
     tabGroup.addTab({
         ...TabsOptions,
         title: tab,
