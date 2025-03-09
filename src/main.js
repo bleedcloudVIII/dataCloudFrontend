@@ -1,4 +1,10 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog, ipcRenderer } = require('electron')
+const protoLoader = require("@grpc/proto-loader");
+const grpc = require("@grpc/grpc-js");
+const fs = require("fs");
+const FileService = require('./services/FileService')
+
+const fileService = new FileService();
 
 let mainWindow;
 let modalWindow;
@@ -11,10 +17,11 @@ function createWindow() {
             nodeIntegration: true,
             contextIsolation: false,
             webviewTag: true,
+            enableRemoteModule: true,
         }
     });
 
-    mainWindow.loadFile('src/index.html');
+    mainWindow.loadFile('index.html');
 }
 
 app.whenReady().then(createWindow);
@@ -47,7 +54,7 @@ function createModal() {
         }
     });
 
-    modalWindow.loadFile('./src/auth/auth.html');
+    modalWindow.loadFile('./auth/auth.html');
 
     modalWindow.once('ready-to-show', () => {
         modalWindow.show();
@@ -64,3 +71,17 @@ ipcMain.on('open-modal', () => {
         mainWindow.webContents.send('modal-opened');
     }
 });
+
+ipcMain.on('save-file', async (event, filePath) => {
+    fileService.save(filePath);
+});
+
+// ipcMain.on('open-file-dialog-for-file', (event) => {
+//     dialog.showOpenDialog({
+//         properties: ['openFile', 'openDirectory']
+//     }).then( result => {
+//         if (!result.canceled && result.filePaths.length > 0) {
+//             event.sender.send('save-file', result.filePaths[0]); // Отправляем первый выбранный путь
+//         }
+//     });
+// });

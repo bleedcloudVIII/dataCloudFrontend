@@ -9,10 +9,8 @@ function onMouseOut() {
     this.src = './../static/file.svg';
 }
 
-function onFileClick(file) {
-    console.log(file);
-    console.log('aasdasaasc');
-}
+// function downloadFile(file) {
+// }
 
 function addPlus(block) {
     const file = document.createElement("div");
@@ -21,6 +19,7 @@ function addPlus(block) {
     const input = document.createElement("input");
 
     input.id = "add";
+    input.name = "add";
     input.style.display = "none";
     input.type = "file";
 
@@ -35,6 +34,8 @@ function addPlus(block) {
     label.appendChild(image);
     file.appendChild(input)
 
+    file.id = "file_id";
+
     block.appendChild(file);
 }
 
@@ -43,7 +44,6 @@ function renderFiles(items) {
 
     filesList.innerHTML = "";
 
-    // Проходим по массиву и создаем элементы
     items.forEach((item) => {
         const file = document.createElement("div");
         const image = document.createElement("img");
@@ -54,9 +54,7 @@ function renderFiles(items) {
         image.src = "./../static/file.svg";
         image.onmouseover = onMouseOver;
         image.onmouseout = onMouseOut;
-        image.onclick = function () {
-            onFileClick(item)
-        };
+        image.onclick = () => downloadFile(item);
 
         file.appendChild(image)
         file.appendChild(text)
