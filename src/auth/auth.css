@@ -1,0 +1,41 @@
+body {
+    height: 150px;
+    width: 350px;
+    overflow-y: hidden;
+    font-family: "Lato", sans-serif;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+.main-container__form{
+
+}
+
+.form {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form__button {
+    width: 207px;
+    font-size: 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+    input {
+        font-size: 1.25rem;
+        width: 200px;
+        height: 1.25rem;
+        margin-bottom: 10px;
+    }
+}
