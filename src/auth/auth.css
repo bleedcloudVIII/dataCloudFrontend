@@ -1,16 +1,12 @@
 body {
-    height: 150px;
-    width: 350px;
     overflow-y: hidden;
     font-family: "Lato", sans-serif;
 }
 
 .main-container {
     padding: 20px;
-}
-
-.main-container__form{
-
+    height: 150px;
+    width: 350px;
 }
 
 .form {

@@ -1,10 +1,4 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
-const grpc = require('@grpc/grpc-js');
-const protoLoader = require('@grpc/proto-loader');
-const fs = require('fs');
-const electron = require('electron')
-
-// const { app, BrowserWindow } = require('electron');
 
 let mainWindow;
 let modalWindow;
