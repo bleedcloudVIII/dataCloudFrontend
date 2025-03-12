@@ -1,5 +1,3 @@
-const TabGroup = require("electron-tabs");
-
 const tabGroup = document.querySelector("tab-group");
 
 tabGroup.setDefaultTab({
@@ -11,6 +9,12 @@ tabGroup.setDefaultTab({
 const TabsOptions = {
     closable: false,
     src: "./locations/location.html",
+    webviewAttributes: {
+        preload: './preload.js',
+        nodeIntegration: true,
+        contextIsolation: true,
+        webviewTag: true,
+    }
 }
 
 const tabs = ["Общее пространство", "Пространство1", "Моё", "Лето2020", "Анапа"];

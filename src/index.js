@@ -1,5 +1,3 @@
-const { ipcRenderer } = require("electron");
-
 document.getElementById("accountImage").addEventListener("click", () => {
-    ipcRenderer.send("open-modal");
+    window.api.send("open-modal");
 });

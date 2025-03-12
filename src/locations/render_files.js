@@ -12,31 +12,36 @@ function onMouseOut() {
 // function downloadFile(file) {
 // }
 
+function saveFile() {
+    alert('asdads');
+    window.api.send("save-file", "file-pahthhhhh");
+}
+
 function addPlus(block) {
-    const file = document.createElement("div");
+    const div = document.createElement("div");
     const image = document.createElement("img");
-    const label = document.createElement("label");
+    const text = document.createElement("label");
     const input = document.createElement("input");
 
-    input.id = "add";
-    input.name = "add";
+    input.id = "add-file";
     input.style.display = "none";
     input.type = "file";
 
-    label.textContent = "Добавить";
-    label.htmlFor = "add";
-    label.classList.add("label-add");
+    text.textContent = "Добавить";
+    text.classList.add("label-add");
 
     image.src = "./../static/file_plus.svg";
     image.style.marginBottom = "5px";
 
-    file.appendChild(label)
-    label.appendChild(image);
-    file.appendChild(input)
+    div.appendChild(text)
+    text.appendChild(image);
+    text.appendChild(input)
 
-    file.id = "file_id";
+    div.htmlFor = "add-file";
 
-    block.appendChild(file);
+    input.onchange = saveFile;
+
+    block.appendChild(div);
 }
 
 function renderFiles(items) {

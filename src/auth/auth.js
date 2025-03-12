@@ -1,5 +1,3 @@
-const TabGroup = require("electron-tabs");
-
 const tabGroup = document.querySelector("tab-group");
 
 const TabsOptions = {

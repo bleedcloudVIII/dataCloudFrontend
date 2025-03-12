@@ -1,8 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog, ipcRenderer } = require('electron')
-const protoLoader = require("@grpc/proto-loader");
-const grpc = require("@grpc/grpc-js");
-const fs = require("fs");
 const FileService = require('./services/FileService')
+const path = require("path");
 
 const fileService = new FileService();
 
@@ -14,10 +12,10 @@ function createWindow() {
         width: 900,
         height: 700,
         webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
-            contextIsolation: false,
+            contextIsolation: true,
             webviewTag: true,
-            enableRemoteModule: true,
         }
     });
 
@@ -48,7 +46,7 @@ function createModal() {
         // frame: false,
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
+            contextIsolation: true,
             webviewTag: true,
 
         }
@@ -72,16 +70,7 @@ ipcMain.on('open-modal', () => {
     }
 });
 
-ipcMain.on('save-file', async (event, filePath) => {
+ipcMain.on('save-file', (event, filePath) => {
+    console.log(filePath);
     fileService.save(filePath);
 });
-
-// ipcMain.on('open-file-dialog-for-file', (event) => {
-//     dialog.showOpenDialog({
-//         properties: ['openFile', 'openDirectory']
-//     }).then( result => {
-//         if (!result.canceled && result.filePaths.length > 0) {
-//             event.sender.send('save-file', result.filePaths[0]); // Отправляем первый выбранный путь
-//         }
-//     });
-// });
