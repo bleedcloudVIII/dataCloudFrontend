@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, ipcRenderer } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const FileService = require('./services/FileService')
 const path = require("path");
 
@@ -70,7 +70,10 @@ ipcMain.on('open-modal', () => {
     }
 });
 
-ipcMain.on('save-file', (event, filePath) => {
-    console.log(filePath);
-    fileService.save(filePath);
+ipcMain.on("open-file-save-dialog", event => {
+    dialog.showOpenDialog({
+        properties: ['openFile']
+    }).then(file => {
+        if (!file.canceled) fileService.save(file.filePaths[0]);
+    });
 });

@@ -8,7 +8,7 @@ class FileService {
     }
 
     save(filePath) {
-        const PROTO_PATH = './keeper.proto';
+        const PROTO_PATH = './src/services/keeper.proto';
 
         const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
             keepCase: true,
@@ -22,7 +22,7 @@ class FileService {
         const client = new (exampleProto.FileService)('localhost:5000', grpc.credentials.createInsecure());
 
         const metadata = new grpc.Metadata();
-        metadata.set("file_name", '223458.txt');
+        metadata.set("file_name", 'png.png');
         metadata.set("location", '4');
 
         const fileStream = fs.createReadStream(filePath);
@@ -36,12 +36,11 @@ class FileService {
         });
 
         fileStream.on('data', (chunk) => {
-            console.log(chunk);
             call.write({ bytes: chunk });
         });
 
         fileStream.on('end', () => {
-            call.end(); // Завершаем поток
+            call.end();
         });
 
         fileStream.on('error', (err) => {
