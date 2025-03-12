@@ -12,7 +12,7 @@ function onMouseOut() {
 // function downloadFile(file) {
 // }
 
-function saveFile(event) {
+function saveFile() {
     window.api.send("open-file-save-dialog");
 }
 
@@ -20,11 +20,6 @@ function addPlus(block) {
     const div = document.createElement("div");
     const image = document.createElement("img");
     const text = document.createElement("label");
-    const input = document.createElement("input");
-
-    // input.id = "add-file";
-    // input.style.display = "none";
-    // input.type = "file";
 
     text.textContent = "Добавить";
     text.classList.add("label-add");
@@ -34,13 +29,8 @@ function addPlus(block) {
 
     div.appendChild(text)
     text.appendChild(image);
-    // text.appendChild(input)
-
-    // div.htmlFor = "add-file";
 
     div.onclick = saveFile;
-
-    // input.onchange = saveFile;
 
     block.appendChild(div);
 }
