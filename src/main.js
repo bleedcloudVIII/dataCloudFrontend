@@ -74,6 +74,10 @@ ipcMain.on("open-file-save-dialog", event => {
     dialog.showOpenDialog({
         properties: ['openFile']
     }).then(file => {
-        if (!file.canceled) fileService.save(file.filePaths[0]);
+        if (!file.canceled)
+        {
+            const response = fileService.save(file.filePaths[0]);
+            console.log(response);
+        }
     });
 });
