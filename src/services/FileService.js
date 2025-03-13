@@ -3,7 +3,7 @@ const protoLoader = require("@grpc/proto-loader");
 const fs = require('fs');
 
 class FileService {
-    download(dirPath) {
+    download(dirPath, fileName) {
         const PROTO_PATH = './src/services/keeper.proto';
 
         const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
@@ -17,20 +17,22 @@ class FileService {
         const exampleProto = grpc.loadPackageDefinition(packageDefinition).keeper;
         const client = new (exampleProto.FileService)('localhost:5000', grpc.credentials.createInsecure());
 
-        const call = client.download({location: '1', file_name: 'example223.txt'});
-        const writer = Bun.file('./example1.txt');
+        if (!fileName) return "Net fileName"
 
-        call.on('data', (chunk) => {
-            console.log(chunk.bytes);
-            writer.write(chunk.bytes);
+        const call = client.download({location: '6', file_name: fileName});
+
+        const write_stream = fs.createWriteStream(dirPath + '\\' + fileName);
+
+        call.on('data', (data) => {
+            write_stream.write(data.bytes);
         });
 
         call.on('end', () => {
-            console.log('end')
+            write_stream.end();
         });
 
-        call.on('error', (err) => {
-
+        call.on('err', (err) => {
+            return err;
         });
     }
 

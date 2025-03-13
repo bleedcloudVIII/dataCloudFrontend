@@ -1,4 +1,4 @@
-const files = ["Item 1", "Item 2", "Item 3", "Item 4"];
+const files = ["file.png", "cyber.avif", "qwe.jpg", "5.txt", "web.webp"];
 
 
 function onMouseOver() {
@@ -9,8 +9,9 @@ function onMouseOut() {
     this.src = './../static/file.svg';
 }
 
-// function downloadFile(file) {
-// }
+function downloadFile(file) {
+    window.api.send("open-file-download-dialog", file);
+}
 
 function saveFile() {
     window.api.send("open-file-save-dialog");

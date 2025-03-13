@@ -9,7 +9,7 @@ let modalWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 900,
+        width: 1000,
         height: 700,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
@@ -77,6 +77,18 @@ ipcMain.on("open-file-save-dialog", event => {
         if (!file.canceled)
         {
             const response = fileService.save(file.filePaths[0]);
+            console.log(response);
+        }
+    });
+});
+
+ipcMain.on("open-file-download-dialog", (event, fileName) => {
+    dialog.showOpenDialog({
+        properties: ['openDirectory']
+    }).then(file => {
+        if (!file.canceled)
+        {
+            const response = fileService.download(file.filePaths[0], fileName);
             console.log(response);
         }
     });
