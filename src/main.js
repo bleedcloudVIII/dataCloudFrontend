@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const FileService = require('./services/FileService')
 const path = require("path");
+const { exec } = require('child_process');
 
 const fileService = new FileService();
 
@@ -92,4 +93,9 @@ ipcMain.on("open-file-download-dialog", (event, fileName) => {
             console.log(response);
         }
     });
+});
+
+ipcMain.on("open-file", (event, fileName) => {
+    filePath = `C:\\dataCloud\\files\\6\\${fileName}`;
+    exec(`start ${filePath}`);
 });

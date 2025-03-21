@@ -17,6 +17,10 @@ function saveFile() {
     window.api.send("open-file-save-dialog");
 }
 
+function openFile(file) {
+    window.api.send("open-file", file);
+}
+
 function addPlus(block) {
     const div = document.createElement("div");
     const image = document.createElement("img");
@@ -46,7 +50,17 @@ function renderFiles(items) {
         const image = document.createElement("img");
         const text = document.createElement("span");
 
+        const img = document.createElement("img");
+        img.src = "./../static/open.svg"
+        // img.style.display="flex";
+        img.style.width="20px";
+        img.style.height="20px";
+        img.style.flexDirection="column";
+        img.onclick = () => openFile(item);
+
         text.textContent = item;
+        text.style.display="flex";
+        text.appendChild(img);
 
         image.src = "./../static/file.svg";
         image.onmouseover = onMouseOver;
